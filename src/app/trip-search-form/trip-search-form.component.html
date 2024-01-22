@@ -1,0 +1,33 @@
+<form [formGroup]="searchTimetable">
+  <app-location-search-input formControlName="from">
+    <span label>Von</span>
+  </app-location-search-input>
+  <app-location-search-input formControlName="to">
+    <span label>Nach</span>
+  </app-location-search-input>
+</form>
+
+@if (!loading() && (trips$ | async); as trips) {
+  @for (trip of trips; track trip.id) {
+    <mat-card role="link" routerLink="/trip" [state]="trip">
+      <mat-card-content>
+        <div>{{ trip.stats.startDatetime | date: "HH:mm" }}</div>
+        <div>
+          {{ trip.legs[0].fromLocation.computeLocationName() }}
+        </div>
+        <div>{{ trip.stats.duration.formatDuration() }}</div>
+
+        <div>{{ trip.stats.endDatetime | date: "HH:mm" }}</div>
+        <div>
+          {{ trip.legs[trip.legs.length - 1].toLocation.computeLocationName() }}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  } @empty {
+    <p>Keine Reisen gefunden.</p>
+  }
+}
+
+@if (loading()) {
+  <mat-spinner diameter="40"></mat-spinner>
+}

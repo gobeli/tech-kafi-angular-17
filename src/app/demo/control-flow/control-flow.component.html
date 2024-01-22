@@ -1,0 +1,47 @@
+<!-- <h1>Control flow</h1>
+
+<h2>&#64;if</h2> -->
+<button (click)="toggle()">Toggle</button>
+<p *ngIf="show(); else oldTemplateSyntax">NgIf == true</p>
+<ng-template #oldTemplateSyntax>
+  <p>NgIf == false</p>
+</ng-template>
+@if (show()) {
+  <p>&#64;if == true</p>
+} @else {
+  <p>&#64;if == false</p>
+}
+
+<!-- <h2>&#64;switch</h2>
+<input type="text" [ngModel]="station()" (ngModelChange)="station.set($event)">
+<div [ngSwitch]="station()">
+  <p *ngSwitchCase="'Bern'">ngSwitchCase Bern</p>
+  <p *ngSwitchCase="'Thun'">ngSwitchCase Thun</p>
+  <p *ngSwitchDefault>{{station()}}</p>
+</div>
+
+@switch (station()) {
+  @case ('Bern') {
+    <p>&#64;case Bern</p>
+  }
+  @case ('Thun') {
+    <p>&#64;case Thun</p>
+  }
+  @default {
+    <p>{{station()}}</p>
+  }
+}
+
+<h2>&#64;for</h2>
+<ul>
+  <li *ngFor="let station of stations;">NgFor {{station}}</li>
+  <li *ngIf="stations.length === 0">No stations</li>
+</ul>
+
+<ul>
+  @for (station of stations; track $index) {
+    <li>&#64;for {{station}}</li>
+  } @empty {
+    <li>No stations</li>
+  }
+</ul> -->

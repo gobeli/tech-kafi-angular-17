@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-content>
+    @if (legs$ | async; as legs) {
+      @for (leg of legs; track leg.legID) {
+        <div>{{ leg.fromStopPoint.departureData?.timetableTime | date: "HH:mm" }}</div>
+        <div>{{ leg.fromLocation.locationName }}</div>
+
+        <div>{{ leg.toStopPoint.arrivalData?.timetableTime | date: "HH:mm" }}</div>
+        <div>{{ leg.toLocation.locationName }}</div>
+      }
+    } @else {
+      <p>Reise nicht gefunden</p>
+    }
+  </mat-card-content>
+</mat-card>

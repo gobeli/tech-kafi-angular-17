@@ -1,0 +1,57 @@
+:host > * + * {
+  margin-top: 50px;
+}
+
+.placeholder {
+  position: relative;
+
+  &__background {
+    filter: blur(6px);
+  }
+
+  &__toggle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.skeleton {
+  height: 56px;
+  background-color: var(--mdc-filled-text-field-container-color);
+  border-top-left-radius: var(--mdc-filled-text-field-container-shape);
+  border-top-right-radius: var(--mdc-filled-text-field-container-shape);
+  position: relative;
+  overflow: hidden;
+
+  &:not(&--fixed):after {
+    content: "";
+    animation: skeleton-animation 1.2s infinite;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(-100%);
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  }
+
+  & + & {
+    margin-top: 22px;
+  }
+}
+
+@keyframes skeleton-animation {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(100%);
+  }
+}
+

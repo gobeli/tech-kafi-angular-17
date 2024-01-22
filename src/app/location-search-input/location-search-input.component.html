@@ -1,0 +1,12 @@
+<mat-form-field>
+  <mat-label>
+    <ng-content select="[label]"></ng-content>
+  </mat-label>
+  <input type="text" [formControl]="searchInput" matInput [matAutocomplete]="autocomplete"/>
+</mat-form-field>
+
+<mat-autocomplete #autocomplete (optionSelected)="optionSelected($event)" (opened)="autocompleteOpened()">
+  @for (location of (suggestions$ | async); track location.stopPointRef) {
+    <mat-option [value]="location.stopPointRef">{{ location.computeLocationName() }}</mat-option>
+  }
+</mat-autocomplete>

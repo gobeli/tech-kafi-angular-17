@@ -1,0 +1,41 @@
+<h1>Deferred views</h1>
+
+<div>
+  @defer (on hover) {
+    <app-deferred [state]="state()"></app-deferred>
+  } @loading(minimum 1s) {
+    <p><mat-spinner diameter="20"></mat-spinner></p>
+  } @placeholder {
+    <p>Hover me</p>
+  }
+</div>
+
+<div>
+  <button mat-raised-button color="accent" #load>Load</button>
+  @defer (on interaction(load)) {
+    <app-deferred [state]="state()"></app-deferred>
+  } @loading(after 1s; minimum 1s) {
+    <p><mat-spinner diameter="20"></mat-spinner></p>
+  } @placeholder {
+    <p>Placeholder</p>
+  }
+</div>
+
+<div>
+  @defer (on interaction(formLoad)) {
+    <app-trip-search-form></app-trip-search-form>
+  } @placeholder {
+    <div class="placeholder">
+      <div class="placeholder__background">
+        <div class="skeleton skeleton--fixed"></div>
+        <div class="skeleton skeleton--fixed"></div>
+      </div>
+      <div class="placeholder__toggle">
+        <button mat-raised-button color="primary" #formLoad>Load</button>
+      </div>
+    </div>
+  } @loading(minimum 2s) {
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+  }
+</div>

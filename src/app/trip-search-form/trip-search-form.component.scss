@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card + mat-card {
+  margin-top: 20px;
+}
+
+mat-card-content {
+  display: grid;
+  row-gap: 5px;
+  column-gap: 10px;
+  grid-template-columns: auto 1fr auto;
+}
